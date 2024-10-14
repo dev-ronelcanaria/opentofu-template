@@ -1,0 +1,56 @@
+aws_region = ""
+app_name = ""
+
+// VPC
+vpc_name = ""
+vpc_cidr_block = ""
+vpc_subnet_1_name = ""
+vpc_subnet_1_cidr_block = ""
+vpc_subnet_1_availability_zone = ""
+vpc_igw = ""
+
+// ECR
+app_ecr_name = ""
+
+// ECS
+ecs_cluster_name = ""
+app_taskdef_family = ""
+app_container_name = ""
+app_ecs_service_name = ""
+wildcard_ssl_app = ""
+
+// ALB
+app_name = ""
+app_listener_host_header = ""
+
+// ASG
+ecs_ec2_instance_name = ""
+ec2_ami_ecs_optimized = ""
+
+// S3 & IAM
+iam_user_app = ""
+s3_bucket_app = ""
+policy_name_app = ""
+
+// RDS
+rds_instance_class = ""
+rds_engine = ""
+rds_engine_version = ""
+rds_instance_identifier = ""
+rds_username = ""
+rds_password = ""
+rds_allocated_storage = 0
+rds_storage_type = ""
+rds_identifier = ""
+rds_name = ""
+rds_port = 0
+rds_subnet_group_name = ""
+rds_parameter_group_name = ""
+rds_backup_retention_period = 0
+rds_final_snapshot_identifier = ""
+rds_security_group_name = ""
+rds_vpc_security_group_ids = []
+rds_tags = {}
+
+// Amplify
+amplify_app_name = ""
