@@ -75,3 +75,14 @@ module "domain" {
   alb_dns_name = module.servers.alb_dns_name
   alb_zone_id = module.servers.alb_zone_id
 }
+
+module "infra" {
+  source = "./modules/infra"
+
+  vpc_id = module.network.vpc_id
+  infra_ami = var.infra_ami
+  static_infra_private_ip = var.static_infra_private_ip
+  subnet_id = module.network.app_subnet_1_id
+  key_name = var.key_name
+  redis_password = var.redis_password
+}
