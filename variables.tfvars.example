@@ -55,3 +55,8 @@ rds_tags = {}
 
 // Amplify
 amplify_app_name = ""
+
+// Infra
+infra_ami = ""
+static_infra_private_ip = ""
+redis_password = ""
