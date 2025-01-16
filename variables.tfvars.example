@@ -60,3 +60,9 @@ amplify_app_name = ""
 infra_ami = ""
 static_infra_private_ip = ""
 redis_password = ""
+
+// Observability
+observability_ami_id = ""
+observability_instance_type = ""
+observability_key_name = ""
+ssh_cidr_my_ip = ""

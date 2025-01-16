@@ -2,7 +2,7 @@ resource "aws_instance" "ec2_app_infra" {
     ami = var.infra_ami
     instance_type = "t2.small"
     subnet_id = var.subnet_id
-    vpc_security_group_ids = [aws_security_group.secgrp_raptor_infra.id]
+    vpc_security_group_ids = [aws_security_group.secgrp_app_infra.id]
     key_name = var.key_name
     private_ip = var.static_infra_private_ip
 

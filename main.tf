@@ -86,3 +86,15 @@ module "infra" {
   key_name = var.key_name
   redis_password = var.redis_password
 }
+
+module "observability" {
+  source = "./modules/observability"
+
+  observability_ami_id = var.observability_ami_id
+  observability_instance_type = var.observability_instance_type
+  observability_subnet_id = module.network.app_subnet_1_id // change to dedicated subnet
+  observability_key_name = var.observability_key_name
+  aws_vpc_id = module.network.vpc_id
+  vpc_cidr_block = var.vpc_cidr_block
+  ssh_cidr_my_ip = var.ssh_cidr_my_ip // change to my IP
+}

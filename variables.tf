@@ -182,3 +182,25 @@ variable "app_name" {
     description = "The password to use for the Redis server"
     type = string
   }
+
+# Observability
+
+  variable "observability_ami_id" {
+    description = "The AMI ID for the observability instance"
+    type = string
+  }
+
+  variable "observability_instance_type" {
+    description = "The instance type for the observability instance"
+    type = string
+  }
+
+  variable "observability_key_name" {
+    description = "The key name for the observability instance"
+    type = string
+  }
+
+  variable "ssh_cidr_my_ip" { // change to my IP
+    description = "The CIDR block for the SSH connection"
+    type = string
+  }
