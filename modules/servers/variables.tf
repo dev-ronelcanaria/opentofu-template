@@ -33,3 +33,7 @@ variable "ec2_ami_ecs_optimized" {
 variable "ecs_cluster_name" {
   type = string
 }
+
+variable "ec2_key_pair" {
+  type = string
+}

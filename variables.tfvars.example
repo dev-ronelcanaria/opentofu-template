@@ -26,6 +26,7 @@ app_listener_host_header = ""
 // ASG
 ecs_ec2_instance_name = ""
 ec2_ami_ecs_optimized = ""
+ec2_key_pair = ""
 
 // S3 & IAM
 iam_user_app = ""

@@ -71,6 +71,10 @@ variable "app_name" {
     type = string
   }
 
+  variable "ec2_key_pair" {
+    type = string
+  }
+
 # RDS
   variable "rds_password" {
     description = "The password for the RDS instance"
@@ -145,4 +149,9 @@ variable "app_name" {
     description = "The name of the Amplify app"
     type = string
   }
-  
+
+# Domain
+  variable "app_domain_zone_id" {
+    description = "The Route 53 zone ID for the domain"
+    type = string
+  } 

@@ -35,6 +35,7 @@ module "servers" {
   ecs_ec2_instance_name = var.ecs_ec2_instance_name
   ec2_ami_ecs_optimized = var.ec2_ami_ecs_optimized
   ecs_cluster_name = var.ecs_cluster_name
+  ec2_key_pair = var.ec2_key_pair
 }
 
 module "storage" {
@@ -64,4 +65,13 @@ module "web" {
   source = "./modules/web"
 
   amplify_app_name = var.amplify_app_name
+}
+
+module "domain" {
+  source = "./modules/domain"
+
+  app_domain_zone_id = var.app_domain_zone_id
+  app_listener_host_header = var.app_listener_host_header
+  alb_dns_name = module.servers.alb_dns_name
+  alb_zone_id = module.servers.alb_zone_id
 }
