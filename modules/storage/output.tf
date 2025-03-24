@@ -20,3 +20,7 @@ output "s3_secret_access_key" {
 output "rds_db" {
   value = aws_db_instance.rds
 }
+
+output "rds_endpoint" {
+  value = aws_db_instance.rds.endpoint
+}

@@ -13,8 +13,28 @@ resource "aws_db_instance" "rds" {
   skip_final_snapshot = var.rds_skip_final_snapshot
   backup_retention_period = var.rds_backup_retention_period
   publicly_accessible = var.rds_publicly_accessible
+  db_name = var.rds_db_name
 }
 
-output "rds_endpoint" {
-  value = aws_db_instance.rds.endpoint
-}
+# resource "aws_db_subnet_group" "infra_subnet_group" {
+#   name = "infra-subnet-group"
+#   subnet_ids = [
+#     var.app_subnet_infra_1_id,
+#     var.app_subnet_infra_2_id
+#   ]
+#   tags = {
+#     Name = "Infra Subnet Group"
+#   }
+# }
+
+# resource "aws_security_group" "raptor_rds_security_group" {
+#   name = "raptor_rds-security-group"
+#   vpc_id = var.vpc_id
+
+#   ingress {
+#     from_port = 5432
+#     to_port = 5432
+#     protocol = "tcp"
+#     cidr_blocks = [var.vpc_cidr_block]
+#   }
+# }

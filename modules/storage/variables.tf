@@ -80,3 +80,8 @@ variable "rds_publicly_accessible" {
   description = "Specifies if the RDS instance is publicly accessible"
   type = bool
 }
+
+variable "rds_db_name" {
+  description = "The name of the database for the RDS instance"
+  type = string
+}

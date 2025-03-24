@@ -70,7 +70,7 @@ resource "aws_ecs_task_definition" "app_taskdef" {
     #   logDriver = "fluentd"
     #   options = {
     #       "fluentd-address" = "localhost:24224"
-    #       "tag" = "raptor-server-prod",
+    #       "tag" = "app-server-prod",
     #       "fluentd-async-connect" = "true"
     #   }
     # }
