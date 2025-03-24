@@ -109,8 +109,8 @@ resource "aws_instance" "observability_instance" {
   }
 }
 
-resource "aws_eip" "observability_eip" {
-  tags = {
-    Name = "app-observability-eip"
-  }
-}
+# resource "aws_eip" "observability_eip" {
+#   tags = {
+#     Name = "app-observability-eip"
+#   }
+# }

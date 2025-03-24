@@ -25,7 +25,64 @@ resource "aws_ecs_task_definition" "app_taskdef" {
       hostPort = 0
       protocol = "tcp"
     }]
+
+    environment = concat(
+      var.env_var,
+      ### ? Depends on the infra structure
+      # [
+      #   {
+      #     name  = "DB_HOST"
+      #     value = var.rds_db_host
+      #   },
+      #   {
+      #     name  = "DB_PORT"
+      #     value = var.rds_db_port
+      #   },
+      #   {
+      #     name  = "DB_DATABASE"
+      #     value = var.rds_db_database
+      #   },
+      #   {
+      #     name  = "DB_USER"
+      #     value = var.rds_db_user
+      #   },
+      #   {
+      #     name  = "DB_PASSWORD"
+      #     value = var.rds_db_password
+      #   },
+      #   {
+      #     name = "AWS_ACCESS_KEY_ID"
+      #     value = var.aws_access_key_id
+      #   },
+      #   {
+      #     name = "AWS_SECRET_ACCESS_KEY"
+      #     value = var.aws_secret_access_key
+      #   },
+      #   {
+      #     name = "AWS_S3_BUCKET"
+      #     value = var.aws_s3_bucket
+      #   },
+      # ]
+    )
+
+    ### ? Logging Configuration for fluentd, loki and grafana
+    # logConfiguration = {
+    #   logDriver = "fluentd"
+    #   options = {
+    #       "fluentd-address" = "localhost:24224"
+    #       "tag" = "raptor-server-prod",
+    #       "fluentd-async-connect" = "true"
+    #   }
+    # }
   }])
+
+  depends_on = [ aws_ecs_cluster.app_ecs_cluster ]
+
+  # lifecycle {
+  #   ignore_changes = [
+  #     container_definitions, #* Remove if there's changes under container definitions
+  #   ]
+  # }
 }
 
 resource "aws_ecs_service" "app_ecs_service" {
@@ -40,8 +97,10 @@ resource "aws_ecs_service" "app_ecs_service" {
   force_new_deployment = true
   
   load_balancer {
-    target_group_arn = aws_lb_target_group.app_tg.arn
+    target_group_arn = var.app_tg_arn
     container_name = var.app_container_name
     container_port = 3333 # ? Depends on the APP_PORT
   }
+
+  depends_on = [ var.app_tg_arn, aws_ecs_task_definition.app_taskdef, aws_ecs_cluster.app_ecs_cluster ]
 }
