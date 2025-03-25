@@ -63,6 +63,13 @@ variable "app_name" {
     type = string
   }
 
+  variable "env_var" {
+    type = list(object({
+      name  = string
+      value = string
+    }))
+  }
+
 # ASG
   variable "ecs_ec2_instance_name" {
     type = string
@@ -130,6 +137,11 @@ variable "app_name" {
   }
   variable "rds_identifier" {
     description = "The identifier for the RDS instance"
+    type = string
+  }
+
+  variable "rds_db_name" {
+    description = "The name of the database to create"
     type = string
   }
 

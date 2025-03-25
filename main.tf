@@ -16,11 +16,14 @@ module "network" {
 module "pipeline" {
   source = "./modules/pipeline"
 
+  app_tg_arn = module.servers.app_tg_arn
+
   app_ecr_name = var.app_ecr_name
   ecs_cluster_name = var.ecs_cluster_name
   app_taskdef_family = var.app_taskdef_family
   app_container_name = var.app_container_name
   app_ecs_service_name = var.app_ecs_service_name
+  env_var = var.env_var
 }
 
 module "servers" {
@@ -59,6 +62,11 @@ module "storage" {
   rds_allocated_storage = var.rds_allocated_storage
   rds_engine = var.rds_engine
   rds_identifier = var.rds_identifier
+  rds_db_name = var.rds_db_name
+
+  # app_subnet_infra_1_id = module.network.app_subnet_infra_1_id
+  # app_subnet_infra_2_id = module.network.app_subnet_infra_2_id
+  # vpc_id = module.network.vpc_id
 }
 
 module "web" {
