@@ -27,8 +27,8 @@ resource "aws_db_instance" "rds" {
 #   }
 # }
 
-# resource "aws_security_group" "raptor_rds_security_group" {
-#   name = "raptor_rds-security-group"
+# resource "aws_security_group" "app_rds_security_group" {
+#   name = "app_rds-security-group"
 #   vpc_id = var.vpc_id
 
 #   ingress {
